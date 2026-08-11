@@ -1,16 +1,17 @@
 Class {
-	#name : #BaselineOfTostSerializer,
-	#superclass : #BaselineOf,
-	#category : 'BaselineOfTostSerializer'
+	#name : 'BaselineOfTostSerializer',
+	#superclass : 'BaselineOf',
+	#category : 'BaselineOfTostSerializer',
+	#package : 'BaselineOfTostSerializer'
 }
 
-{ #category : #baselines }
+{ #category : 'baselines' }
 BaselineOfTostSerializer >> baseline: spec [
 	<baseline>
 	spec for: #'common' do: [
 		spec 
 			baseline: 'StateSpecs' with: [
-				spec repository: 'github://dionisiydk/StateSpecs:v5.0.2'];
+				spec repository: 'github://oliveiraallex/StateSpecs:dev13'];
 			baseline: 'ObjectTravel' with: [
 				spec
 					repository: 'github://pharo-ide/ObjectTravel:v1.0.4';
@@ -27,7 +28,7 @@ BaselineOfTostSerializer >> baseline: spec [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BaselineOfTostSerializer >> projectClass [
 	^ [ self class environment at: #MetacelloCypressBaselineProject ]
 		on: NotFound
