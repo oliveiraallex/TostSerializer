@@ -14,7 +14,7 @@ BaselineOfTostSerializer >> baseline: spec [
 				spec repository: 'github://oliveiraallex/StateSpecs:dev13'];
 			baseline: 'ObjectTravel' with: [
 				spec
-					repository: 'github://pharo-ide/ObjectTravel:v1.0.4';
+					repository: 'github://oliveiraallex/ObjectTravel:vdev13';
 					loads: 'Core' ];
 			project: 'ObjectTravelTests' copyFrom: 'ObjectTravel' with: [
 				spec loads: 'Tests'].
