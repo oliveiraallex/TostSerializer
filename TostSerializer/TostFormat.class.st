@@ -19,30 +19,31 @@ Internal Representation and Key Implementation Points.
 	id:		<SmallInteger>	""byte""
 "
 Class {
-	#name : #TostFormat,
-	#superclass : #Object,
+	#name : 'TostFormat',
+	#superclass : 'Object',
 	#instVars : [
 		'id'
 	],
-	#category : #TostSerializer
+	#category : 'TostSerializer',
+	#package : 'TostSerializer'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TostFormat >> id [
 	^id
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TostFormat >> id: aByte [
 	id := aByte
 ]
 
-{ #category : #operations }
+{ #category : 'operations' }
 TostFormat >> readObjectWith: aTostTransporter [
 	self subclassResponsibility 
 ]
 
-{ #category : #operations }
+{ #category : 'operations' }
 TostFormat >> tryWriteObject: anObject with: aTostTransporter [
 	self subclassResponsibility 
 ]

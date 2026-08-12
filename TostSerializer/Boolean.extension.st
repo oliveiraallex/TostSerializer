@@ -1,6 +1,6 @@
-Extension { #name : #Boolean }
+Extension { #name : 'Boolean' }
 
-{ #category : #'*TostSerializer' }
+{ #category : '*TostSerializer' }
 Boolean >> isTostValueObject [
 	^true
 ]

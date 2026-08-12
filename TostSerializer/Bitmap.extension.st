@@ -1,13 +1,13 @@
-Extension { #name : #Bitmap }
+Extension { #name : 'Bitmap' }
 
-{ #category : #'*TostSerializer' }
+{ #category : '*TostSerializer' }
 Bitmap class >> createTostInstanceWith: aTostTransporter [
 	| bytes |
 	bytes := ByteArray createTostInstanceWith: aTostTransporter.
 	^Bitmap decompressFromByteArray: bytes
 ]
 
-{ #category : #'*TostSerializer' }
+{ #category : '*TostSerializer' }
 Bitmap >> writeTostBodyWith: aTostTransporter [
 	self compressToByteArray writeTostBodyWith: aTostTransporter
 ]

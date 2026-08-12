@@ -14,23 +14,24 @@ Internal Representation and Key Implementation Points.
 	objects:		<Array>
 "
 Class {
-	#name : #TostIndexedObjectFormat,
-	#superclass : #TostFormat,
+	#name : 'TostIndexedObjectFormat',
+	#superclass : 'TostFormat',
 	#instVars : [
 		'objects',
 		'indexes'
 	],
-	#category : 'TostSerializer'
+	#category : 'TostSerializer',
+	#package : 'TostSerializer'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TostIndexedObjectFormat class >> on: anArray [
 
 	^self new 
 		buildIndexesFor: anArray
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TostIndexedObjectFormat >> buildIndexesFor: anArray [
 	anArray size > 255 ifTrue: [ self error: 'Indexed object format supports up to 255 objects' ].
 	
@@ -39,12 +40,12 @@ TostIndexedObjectFormat >> buildIndexesFor: anArray [
 	objects withIndexDo: [ :each :i | indexes at: each put: i ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TostIndexedObjectFormat >> objects [
 	^objects
 ]
 
-{ #category : #operations }
+{ #category : 'operations' }
 TostIndexedObjectFormat >> tryWriteObject: anObject with: aTostTransporter [
 	
 	indexes 

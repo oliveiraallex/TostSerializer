@@ -11,43 +11,44 @@ Internal Representation and Key Implementation Points.
 	substitutionBlock:		<BlockClosure>
 "
 Class {
-	#name : #TostObjectDynamicSubstitutionFormat,
-	#superclass : #TostObjectSubstitutionFormat,
+	#name : 'TostObjectDynamicSubstitutionFormat',
+	#superclass : 'TostObjectSubstitutionFormat',
 	#instVars : [
 		'substitutionBlock',
 		'conditionBlock'
 	],
-	#category : 'TostSerializer'
+	#category : 'TostSerializer',
+	#package : 'TostSerializer'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TostObjectDynamicSubstitutionFormat class >> for: conditionBlock by: substitutionBlock [
 	^self new 
 		conditionBlock: conditionBlock;
 		substitutionBlock: substitutionBlock 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TostObjectDynamicSubstitutionFormat >> conditionBlock [
 	^ conditionBlock
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TostObjectDynamicSubstitutionFormat >> conditionBlock: anObject [
 	conditionBlock := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TostObjectDynamicSubstitutionFormat >> substitutionBlock [
 	^ substitutionBlock
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TostObjectDynamicSubstitutionFormat >> substitutionBlock: anObject [
 	substitutionBlock := anObject
 ]
 
-{ #category : #operations }
+{ #category : 'operations' }
 TostObjectDynamicSubstitutionFormat >> tryWriteObject: anObject with: aTostTransporter [
 	| substitution |
 	(conditionBlock value: anObject) ifFalse: [ ^false ].

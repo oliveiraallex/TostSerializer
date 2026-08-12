@@ -10,31 +10,32 @@ Internal Representation and Key Implementation Points.
 	substitutions:		<IdentityDictionary>
 "
 Class {
-	#name : #TostObjectStaticSubstitutionFormat,
-	#superclass : #TostObjectSubstitutionFormat,
+	#name : 'TostObjectStaticSubstitutionFormat',
+	#superclass : 'TostObjectSubstitutionFormat',
 	#instVars : [
 		'substitutions'
 	],
-	#category : 'TostSerializer'
+	#category : 'TostSerializer',
+	#package : 'TostSerializer'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 TostObjectStaticSubstitutionFormat class >> substitutions: aDictionary [
 	^self new 
 		substitutions: (aDictionary as: IdentityDictionary)
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TostObjectStaticSubstitutionFormat >> substitutions [
 	^ substitutions
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TostObjectStaticSubstitutionFormat >> substitutions: anObject [
 	substitutions := anObject
 ]
 
-{ #category : #operations }
+{ #category : 'operations' }
 TostObjectStaticSubstitutionFormat >> tryWriteObject: anObject with: aTostTransporter [
 	| substitution |
 	substitution := substitutions at: anObject ifAbsent: [ ^false ].

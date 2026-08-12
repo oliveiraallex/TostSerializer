@@ -1,12 +1,12 @@
-Extension { #name : #UndefinedObject }
+Extension { #name : 'UndefinedObject' }
 
-{ #category : #'*TostSerializer' }
+{ #category : '*TostSerializer' }
 UndefinedObject class >> createTostInstanceWith: aTostTransporter [
 
 	^nil
 ]
 
-{ #category : #'*TostSerializer' }
+{ #category : '*TostSerializer' }
 UndefinedObject >> isTostValueObject [
 	^true
 ]

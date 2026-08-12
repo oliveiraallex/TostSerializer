@@ -12,12 +12,13 @@ According to this I implement general reading methods which are same for any my 
 Reading just reads the next object from the stream but then it commands the transporter to change the traversal direction according to the serialization logic
 "
 Class {
-	#name : #TostObjectSubstitutionFormat,
-	#superclass : #TostFormat,
-	#category : #TostSerializer
+	#name : 'TostObjectSubstitutionFormat',
+	#superclass : 'TostFormat',
+	#category : 'TostSerializer',
+	#package : 'TostSerializer'
 }
 
-{ #category : #operations }
+{ #category : 'operations' }
 TostObjectSubstitutionFormat >> readObjectWith: aTostTransporter [
 	| object |
 	object := aTostTransporter readObject.

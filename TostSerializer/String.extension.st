@@ -1,12 +1,12 @@
-Extension { #name : #String }
+Extension { #name : 'String' }
 
-{ #category : #'*TostSerializer' }
+{ #category : '*TostSerializer' }
 String class >> createTostInstanceWith: aTostTransporter [
 	
 	^aTostTransporter readString: self
 ]
 
-{ #category : #'*TostSerializer' }
+{ #category : '*TostSerializer' }
 String >> writeTostBodyWith: aTostTransporter [
 	
 	aTostTransporter writeString: self

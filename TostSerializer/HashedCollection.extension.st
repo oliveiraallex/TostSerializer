@@ -1,6 +1,6 @@
-Extension { #name : #HashedCollection }
+Extension { #name : 'HashedCollection' }
 
-{ #category : #'*TostSerializer' }
+{ #category : '*TostSerializer' }
 HashedCollection class >> createTostInstanceWith: aTostTransporter [
 
 	| instance |

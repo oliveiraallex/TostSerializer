@@ -1,6 +1,6 @@
-Extension { #name : #ClassDescription }
+Extension { #name : 'ClassDescription' }
 
-{ #category : #'*TostSerializer' }
+{ #category : '*TostSerializer' }
 ClassDescription >> createTostInstanceWith: aTostTransporter [
 	^self isVariable 
 		ifTrue: [ self basicNew: aTostTransporter readPositiveInteger ]

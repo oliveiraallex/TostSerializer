@@ -55,26 +55,27 @@ Internal Representation and Key Implementation Points.
 	formats:		<Array of<TostFormat>>
 "
 Class {
-	#name : #TostTransport,
-	#superclass : #Object,
+	#name : 'TostTransport',
+	#superclass : 'Object',
 	#instVars : [
 		'formats'
 	],
-	#category : #TostSerializer
+	#category : 'TostSerializer',
+	#package : 'TostSerializer'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TostTransport class >> formats: formatsArray [
 	^self new 
 		formats: formatsArray 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TostTransport >> addFirstFormat: aTostBinaryFormat [
 	self formats: { aTostBinaryFormat }, formats
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TostTransport >> addFormat: aTostBinaryFormat before: formatClass [
 	| existingFormatIndex newFormats |
 	existingFormatIndex := self formatIdFor: formatClass.
@@ -85,7 +86,7 @@ TostTransport >> addFormat: aTostBinaryFormat before: formatClass [
 	self formats: newFormats asArray
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TostTransport >> formatIdFor: aTostFormatClass [
 
 	formats doWithIndex: [ :each :id | 
@@ -94,29 +95,29 @@ TostTransport >> formatIdFor: aTostFormatClass [
 	self error: 'Format is not defined'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TostTransport >> formats [
 	^ formats
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TostTransport >> formats: formatsArray [
 	formatsArray doWithIndex: [ :each :index | each id: index ].
 	self preparedFormats: formatsArray
 ]
 
-{ #category : #api }
+{ #category : 'api' }
 TostTransport >> newTransporterOn: transportStream [
 
 	^TostTransporter using: self on: transportStream
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TostTransport >> preparedFormats: formatsArray [
 	formats := formatsArray
 ]
 
-{ #category : #operations }
+{ #category : 'operations' }
 TostTransport >> readObjectWith: aTostTransporter [
 
 	| objectFormatType currentFormat |
@@ -127,7 +128,7 @@ TostTransport >> readObjectWith: aTostTransporter [
 	^currentFormat readObjectWith: aTostTransporter
 ]
 
-{ #category : #api }
+{ #category : 'api' }
 TostTransport >> receiveObjectFrom: transportStream [
 
 	| transporter |
@@ -135,7 +136,7 @@ TostTransport >> receiveObjectFrom: transportStream [
 	^transporter materializeObject
 ]
 
-{ #category : #api }
+{ #category : 'api' }
 TostTransport >> sendObject: anObject to: transportStream [
 
 	| transporter |
@@ -143,7 +144,7 @@ TostTransport >> sendObject: anObject to: transportStream [
 	transporter serializeObject: anObject
 ]
 
-{ #category : #operations }
+{ #category : 'operations' }
 TostTransport >> writeObject: anObject with: aTostTransporter [
 	| success |
 	formats do: [ :each | 		 

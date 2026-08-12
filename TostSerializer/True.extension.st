@@ -1,6 +1,6 @@
-Extension { #name : #True }
+Extension { #name : 'True' }
 
-{ #category : #'*TostSerializer' }
+{ #category : '*TostSerializer' }
 True class >> createTostInstanceWith: aTostTransporter [
 
 	^true

@@ -1,6 +1,6 @@
-Extension { #name : #Context }
+Extension { #name : 'Context' }
 
-{ #category : #'*TostSerializer' }
+{ #category : '*TostSerializer' }
 Context >> correctTostMaterializationWith: materializedWordSize [
 
 	| numLiterals originalLiteralSize newLiteralSize |
@@ -13,7 +13,7 @@ Context >> correctTostMaterializationWith: materializedWordSize [
 	pc := pc - (originalLiteralSize - newLiteralSize)
 ]
 
-{ #category : #'*TostSerializer' }
+{ #category : '*TostSerializer' }
 Context class >> createTostInstanceWith: aTostTransporter [
 
 	| frameSize wordSize context |
@@ -25,7 +25,7 @@ Context class >> createTostInstanceWith: aTostTransporter [
 	^context
 ]
 
-{ #category : #'*TostSerializer' }
+{ #category : '*TostSerializer' }
 Context >> writeTostBodyWith: aTostTransporter [
 
 	aTostTransporter writeByte: Smalltalk wordSize.

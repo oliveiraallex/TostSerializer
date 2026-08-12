@@ -3,12 +3,13 @@ I am a format which specifies how to encode duplicated objects which was already
 I encode them by a stream position where they was already written
 "
 Class {
-	#name : #TostDuplicatedObjectFormat,
-	#superclass : #TostStreamlineFormat,
-	#category : #TostSerializer
+	#name : 'TostDuplicatedObjectFormat',
+	#superclass : 'TostStreamlineFormat',
+	#category : 'TostSerializer',
+	#package : 'TostSerializer'
 }
 
-{ #category : #operations }
+{ #category : 'operations' }
 TostDuplicatedObjectFormat >> readObjectWith: aTostTransporter [ 
 	| objectIndex |
 	objectIndex := aTostTransporter readPositiveInteger.
@@ -16,7 +17,7 @@ TostDuplicatedObjectFormat >> readObjectWith: aTostTransporter [
 	^aTostTransporter processedObjectAt: objectIndex
 ]
 
-{ #category : #operations }
+{ #category : 'operations' }
 TostDuplicatedObjectFormat >> tryWriteObject: anObject with: aTostTransporter [
 	
 	^aTostTransporter writeDuplicatedObject: anObject format: id

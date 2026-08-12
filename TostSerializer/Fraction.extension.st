@@ -1,6 +1,6 @@
-Extension { #name : #Fraction }
+Extension { #name : 'Fraction' }
 
-{ #category : #'*TostSerializer' }
+{ #category : '*TostSerializer' }
 Fraction class >> createTostInstanceWith: aTostTransporter [
 	
 	| denominator numerator |
@@ -10,7 +10,7 @@ Fraction class >> createTostInstanceWith: aTostTransporter [
 	^numerator / denominator
 ]
 
-{ #category : #'*TostSerializer' }
+{ #category : '*TostSerializer' }
 Fraction >> writeTostBodyWith: aTostTransporter [
 
 	aTostTransporter writePositiveInteger: denominator.

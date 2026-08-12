@@ -1,17 +1,17 @@
-Extension { #name : #Character }
+Extension { #name : 'Character' }
 
-{ #category : #'*TostSerializer' }
+{ #category : '*TostSerializer' }
 Character class >> createTostInstanceWith: aTostTransporter [
 
 	^self value: aTostTransporter readPositiveInteger 
 ]
 
-{ #category : #'*TostSerializer' }
+{ #category : '*TostSerializer' }
 Character >> isTostValueObject [ 
 	^true
 ]
 
-{ #category : #'*TostSerializer' }
+{ #category : '*TostSerializer' }
 Character >> writeTostBodyWith: aTostTransporter [
 	
 	aTostTransporter writePositiveInteger: self asInteger

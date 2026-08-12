@@ -1,11 +1,11 @@
-Extension { #name : #Object }
+Extension { #name : 'Object' }
 
-{ #category : #'*TostSerializer' }
+{ #category : '*TostSerializer' }
 Object >> isTostValueObject [
 	^false
 ]
 
-{ #category : #'*TostSerializer' }
+{ #category : '*TostSerializer' }
 Object >> writeTostBodyWith: aTostTransporter [
  
 	self class isVariable ifTrue: [ aTostTransporter writePositiveInteger: self size]

@@ -1,6 +1,6 @@
-Extension { #name : #BlockClosure }
+Extension { #name : 'BlockClosure' }
 
-{ #category : #'*TostSerializer' }
+{ #category : '*TostSerializer' }
 BlockClosure >> correctTostMaterializationWith: materializedWordSize [
 
 	| numLiterals originalLiteralSize newLiteralSize |
@@ -12,7 +12,7 @@ BlockClosure >> correctTostMaterializationWith: materializedWordSize [
 	startpc := startpc - (originalLiteralSize - newLiteralSize)
 ]
 
-{ #category : #'*TostSerializer' }
+{ #category : '*TostSerializer' }
 BlockClosure class >> createTostInstanceWith: aTostTransporter [
 	| block wordSize |
 	block := super createTostInstanceWith: aTostTransporter.
@@ -22,7 +22,7 @@ BlockClosure class >> createTostInstanceWith: aTostTransporter [
 	^block
 ]
 
-{ #category : #'*TostSerializer' }
+{ #category : '*TostSerializer' }
 BlockClosure >> writeTostBodyWith: aTostTransporter [
 	super writeTostBodyWith: aTostTransporter.
 	
