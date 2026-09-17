@@ -1,10 +1,11 @@
 Class {
-	#name : #BaselineOfTostSerializer,
-	#superclass : #BaselineOf,
-	#category : 'BaselineOfTostSerializer'
+	#name : 'BaselineOfTostSerializer',
+	#superclass : 'BaselineOf',
+	#category : 'BaselineOfTostSerializer',
+	#package : 'BaselineOfTostSerializer'
 }
 
-{ #category : #baselines }
+{ #category : 'baselines' }
 BaselineOfTostSerializer >> baseline: spec [
 	<baseline>
 	spec for: #'common' do: [
@@ -27,7 +28,7 @@ BaselineOfTostSerializer >> baseline: spec [
 
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BaselineOfTostSerializer >> projectClass [
 	^ [ self class environment at: #MetacelloCypressBaselineProject ]
 		on: NotFound

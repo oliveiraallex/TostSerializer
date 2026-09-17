@@ -1,6 +1,6 @@
-Extension { #name : #CompiledCode }
+Extension { #name : 'CompiledCode' }
 
-{ #category : #'*TostSerializer' }
+{ #category : '*TostSerializer' }
 CompiledCode class >> createTostInstanceWith: aTostTransporter [
 
 	| size bytecodes method header numLiterals wordSize literalSize newLiteralSize |
@@ -22,7 +22,7 @@ CompiledCode class >> createTostInstanceWith: aTostTransporter [
 	^method
 ]
 
-{ #category : #'*TostSerializer' }
+{ #category : '*TostSerializer' }
 CompiledCode >> writeTostBodyWith: aTostTransporter [
 	| bytecodes initialPC |
 	initialPC := self initialPC.

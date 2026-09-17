@@ -1,25 +1,26 @@
 Class {
-	#name : #TostTransportTestCase,
-	#superclass : #TestCase,
+	#name : 'TostTransportTestCase',
+	#superclass : 'TestCase',
 	#instVars : [
 		'transport',
 		'transporter',
 		'transportStream'
 	],
-	#category : #'TostSerializer-Tests'
+	#category : 'TostSerializer-Tests',
+	#package : 'TostSerializer-Tests'
 }
 
-{ #category : #testing }
+{ #category : 'testing' }
 TostTransportTestCase class >> isAbstract [
 	^self == TostTransportTestCase 
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 TostTransportTestCase >> createTransportStream [
 	self subclassResponsibility 
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 TostTransportTestCase >> setUp [
 	super setUp.
 	

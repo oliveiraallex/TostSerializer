@@ -1,23 +1,23 @@
-Extension { #name : #Integer }
+Extension { #name : 'Integer' }
 
-{ #category : #'*TostSerializer' }
+{ #category : '*TostSerializer' }
 Integer >> byteAt: anInteger [
 	"Compatibility with Pharo7. In Pharo8/9 #digitAt: was changed to #byteAt:"
 	^ self digitAt: anInteger
 ]
 
-{ #category : #'*TostSerializer' }
+{ #category : '*TostSerializer' }
 Integer >> bytesCount [
 	"Compatibility with Pharo7. In Pharo8/9 #digitLength was changed to #bytesCount"
 	^ self digitLength
 ]
 
-{ #category : #'*TostSerializer' }
+{ #category : '*TostSerializer' }
 Integer class >> createTostInstanceWith: aTostTransporter [
 	^aTostTransporter readInteger 
 ]
 
-{ #category : #'*TostSerializer' }
+{ #category : '*TostSerializer' }
 Integer >> writeTostBodyWith: aTostTransporter [
 	
 	aTostTransporter writeInteger: self

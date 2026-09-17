@@ -1,29 +1,30 @@
 Class {
-	#name : #TostSerializationTests,
-	#superclass : #TostTransportTestCase,
+	#name : 'TostSerializationTests',
+	#superclass : 'TostTransportTestCase',
 	#instVars : [
 		'binaryData'
 	],
-	#category : #'TostSerializer-Tests'
+	#category : 'TostSerializer-Tests',
+	#package : 'TostSerializer-Tests'
 }
 
-{ #category : #helpers }
+{ #category : 'helpers' }
 TostSerializationTests >> binaryData [
 	^binaryData := transportStream contents.
 	
 ]
 
-{ #category : #helpers }
+{ #category : 'helpers' }
 TostSerializationTests >> clearData [
 	transportStream reset
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 TostSerializationTests >> createTransportStream [
 	transportStream := ByteArray new writeStream
 ]
 
-{ #category : #'tests-objects' }
+{ #category : 'tests-objects' }
 TostSerializationTests >> testByteArrayInstance [
 
 	| object |
@@ -39,7 +40,7 @@ TostSerializationTests >> testByteArrayInstance [
 	} asByteArray, object
 ]
 
-{ #category : #'tests-objects' }
+{ #category : 'tests-objects' }
 TostSerializationTests >> testEmptyObject [
 
 	| object classNameBytes classNameSizeBytes |
@@ -51,7 +52,7 @@ TostSerializationTests >> testEmptyObject [
 	self binaryData should equal: ({transport formatIdFor: TostNewObjectOfNewClassFormat}, classNameSizeBytes, classNameBytes) asByteArray
 ]
 
-{ #category : #'tests-objects' }
+{ #category : 'tests-objects' }
 TostSerializationTests >> testObjectAndItClass [
 
 	| object |
@@ -64,7 +65,7 @@ TostSerializationTests >> testObjectAndItClass [
 	self binaryData first should equal: (transport formatIdFor: TostNewObjectOfNewClassFormat)
 ]
 
-{ #category : #'tests-objects' }
+{ #category : 'tests-objects' }
 TostSerializationTests >> testObjectOfWellKnownClass [
 
 	| extraFormat |
@@ -76,7 +77,7 @@ TostSerializationTests >> testObjectOfWellKnownClass [
 	self binaryData should equal: {extraFormat id. 2} asByteArray
 ]
 
-{ #category : #'tests-objects' }
+{ #category : 'tests-objects' }
 TostSerializationTests >> testSameObjectTwice [
 
 	| object |
@@ -89,7 +90,7 @@ TostSerializationTests >> testSameObjectTwice [
 	self binaryData should equal: ({transport formatIdFor: TostDuplicatedObjectFormat}, #[1 4]) asByteArray
 ]
 
-{ #category : #'tests-objects' }
+{ #category : 'tests-objects' }
 TostSerializationTests >> testThreeObjectsOfSameClassWhereFirstTwoAreSame [
 
 	| object |
@@ -103,7 +104,7 @@ TostSerializationTests >> testThreeObjectsOfSameClassWhereFirstTwoAreSame [
 	self binaryData should equal: {transport formatIdFor: TostNewObjectOfDuplicatedClassFormat. 1. 4} asByteArray 
 ]
 
-{ #category : #'tests-objects' }
+{ #category : 'tests-objects' }
 TostSerializationTests >> testThreeObjectsOfSameClassWhereLastTwoAreSame [
 
 	| object objectIndex |
@@ -118,7 +119,7 @@ TostSerializationTests >> testThreeObjectsOfSameClassWhereLastTwoAreSame [
 	self binaryData should equal: {transport formatIdFor: TostDuplicatedObjectFormat. 1. objectIndex} asByteArray 
 ]
 
-{ #category : #'tests-objects' }
+{ #category : 'tests-objects' }
 TostSerializationTests >> testTwoObjectsOfSameClass [
 
 	| object |
@@ -132,7 +133,7 @@ TostSerializationTests >> testTwoObjectsOfSameClass [
 	self binaryData should equal: {transport formatIdFor: TostNewObjectOfDuplicatedClassFormat. 1. 4} asByteArray 
 ]
 
-{ #category : #'tests-objects' }
+{ #category : 'tests-objects' }
 TostSerializationTests >> testWellKnownCompositeObject [
 
 	| extraFormat object container |
@@ -146,7 +147,7 @@ TostSerializationTests >> testWellKnownCompositeObject [
 	self binaryData should equal: {2. 1. extraFormat id. 2} asByteArray
 ]
 
-{ #category : #'tests-objects' }
+{ #category : 'tests-objects' }
 TostSerializationTests >> testWellKnownEmptyObject [
 
 	| extraFormat object |
@@ -159,7 +160,7 @@ TostSerializationTests >> testWellKnownEmptyObject [
 	self binaryData should equal: {extraFormat id. 2} asByteArray
 ]
 
-{ #category : #'tests-objects' }
+{ #category : 'tests-objects' }
 TostSerializationTests >> testWellKnownNonEmptyRootObject [
 
 	| extraFormat object |
@@ -172,7 +173,7 @@ TostSerializationTests >> testWellKnownNonEmptyRootObject [
 	self binaryData should equal: {extraFormat id. 1} asByteArray
 ]
 
-{ #category : #'tests-primitive data' }
+{ #category : 'tests-primitive data' }
 TostSerializationTests >> testWritingByteArray [
 
 	transporter writeBytes: #[1 2 3].
@@ -180,7 +181,7 @@ TostSerializationTests >> testWritingByteArray [
 	self binaryData should equal: #[1 2 3]
 ]
 
-{ #category : #'tests-primitive data' }
+{ #category : 'tests-primitive data' }
 TostSerializationTests >> testWritingOneByteInteger [
 
 	transporter writeInteger: 10.
@@ -188,19 +189,19 @@ TostSerializationTests >> testWritingOneByteInteger [
 	self binaryData should equal: #[1 0 10]
 ]
 
-{ #category : #'tests-primitive data' }
+{ #category : 'tests-primitive data' }
 TostSerializationTests >> testWritingTwoBytesInteger [
 	transporter writeInteger: 300.
 	self binaryData should equal: {2. 0. (300 byteAt: 2). (300 byteAt: 1)} asByteArray
 ]
 
-{ #category : #'tests-primitive data' }
+{ #category : 'tests-primitive data' }
 TostSerializationTests >> testWritingTwoBytesNegativeInteger [
 	transporter writeInteger: -300.
 	self binaryData should equal: {2. 1. (300 byteAt: 2). (300 byteAt: 1)} asByteArray
 ]
 
-{ #category : #'tests-primitive data' }
+{ #category : 'tests-primitive data' }
 TostSerializationTests >> testWritingTwoBytesPositiveInteger [
 	transporter writePositiveInteger: 300.
 	self binaryData should equal: {2. (300 byteAt: 2). (300 byteAt: 1)} asByteArray

@@ -3,12 +3,13 @@ I am a format which specifies how to encode objects of classes which was already
 Initialy the class of object is encoded by full name string. But if new instance of object is going to be written I will use original stream position to encode its class instead of a name.
 "
 Class {
-	#name : #TostNewObjectOfDuplicatedClassFormat,
-	#superclass : #TostStreamlineFormat,
-	#category : #TostSerializer
+	#name : 'TostNewObjectOfDuplicatedClassFormat',
+	#superclass : 'TostStreamlineFormat',
+	#category : 'TostSerializer',
+	#package : 'TostSerializer'
 }
 
-{ #category : #operations }
+{ #category : 'operations' }
 TostNewObjectOfDuplicatedClassFormat >> readObjectWith: aTostTransporter [ 
 	| classIndex class |
 	classIndex := aTostTransporter readPositiveInteger.
@@ -17,7 +18,7 @@ TostNewObjectOfDuplicatedClassFormat >> readObjectWith: aTostTransporter [
 	^aTostTransporter readNewObjectOf: class
 ]
 
-{ #category : #operations }
+{ #category : 'operations' }
 TostNewObjectOfDuplicatedClassFormat >> tryWriteObject: anObject with: aTostTransporter [
 
 	| written |

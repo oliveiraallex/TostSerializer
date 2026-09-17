@@ -1,6 +1,6 @@
-Extension { #name : #False }
+Extension { #name : 'False' }
 
-{ #category : #'*TostSerializer' }
+{ #category : '*TostSerializer' }
 False class >> createTostInstanceWith: aTostTransporter [
 
 	^false

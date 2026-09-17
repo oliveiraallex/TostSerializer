@@ -47,8 +47,8 @@ Internal Representation and Key Implementation Points.
 			   
 "
 Class {
-	#name : #TostTransporter,
-	#superclass : #Object,
+	#name : 'TostTransporter',
+	#superclass : 'Object',
 	#instVars : [
 		'transportStream',
 		'traveler',
@@ -58,22 +58,23 @@ Class {
 		'finalMaterializationActions',
 		'transport'
 	],
-	#category : #TostSerializer
+	#category : 'TostSerializer',
+	#package : 'TostSerializer'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TostTransporter class >> using: aTostTransport on: transportStream [
 	^self new 
 		transport: aTostTransport;
 		transportStream: transportStream
 ]
 
-{ #category : #controlling }
+{ #category : 'controlling' }
 TostTransporter >> atNextStepProcess: anObject [
 	traveler atNextStepVisit: anObject
 ]
 
-{ #category : #'reading-objects' }
+{ #category : 'reading-objects' }
 TostTransporter >> completeMaterializationOf: anObject [
 	| action |
 	finalMaterializationActions isEmptyOrNil ifTrue: [ ^self ]. "For optimization we never initialize post actions with empty array because in many cases post processing is not required"
@@ -82,7 +83,7 @@ TostTransporter >> completeMaterializationOf: anObject [
 	action value
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 TostTransporter >> initialize [
 	super initialize.
 	
@@ -90,7 +91,7 @@ TostTransporter >> initialize [
 	processedClasses := IdentityDictionary new.
 ]
 
-{ #category : #api }
+{ #category : 'api' }
 TostTransporter >> materializeObject [
 	| newObject object |	
 	traveler := ObjectTraveler new.
@@ -112,27 +113,27 @@ TostTransporter >> materializeObject [
 	^object
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TostTransporter >> objectIndex [
 	^ objectIndex
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TostTransporter >> objectIndex: anObject [
 	objectIndex := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TostTransporter >> processedClassAt: index [
 	^processedClasses at: index
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TostTransporter >> processedObjectAt: index [
 	^processedObjects at: index
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 TostTransporter >> processesObject: anObject asNodeAt: pathNodesIndex [
 
 	| actualNode |
@@ -140,19 +141,19 @@ TostTransporter >> processesObject: anObject asNodeAt: pathNodesIndex [
 	^anObject == actualNode
 ]
 
-{ #category : #'reading-primitive data' }
+{ #category : 'reading-primitive data' }
 TostTransporter >> readByte [
 	^transportStream next
 ]
 
-{ #category : #'reading-primitive data' }
+{ #category : 'reading-primitive data' }
 TostTransporter >> readBytes: count [
 
 	^transportStream next: count.
 
 ]
 
-{ #category : #'reading-primitive data' }
+{ #category : 'reading-primitive data' }
 TostTransporter >> readBytes: count as: aByteArrayClass [
 	| bytes |
 	bytes := self readBytes: count.
@@ -163,7 +164,7 @@ TostTransporter >> readBytes: count as: aByteArrayClass [
 	^bytes
 ]
 
-{ #category : #'reading-primitive data' }
+{ #category : 'reading-primitive data' }
 TostTransporter >> readInteger [
 
 	| bytesSize bytes signByte |
@@ -173,7 +174,7 @@ TostTransporter >> readInteger [
 	^signByte = 0 ifTrue: [bytes asInteger] ifFalse: [ bytes asInteger negated ]
 ]
 
-{ #category : #'reading-objects' }
+{ #category : 'reading-objects' }
 TostTransporter >> readNewClassAndObject [
 	
 	| className class |
@@ -184,7 +185,7 @@ TostTransporter >> readNewClassAndObject [
 	^self readNewObjectOf: class
 ]
 
-{ #category : #'reading-objects' }
+{ #category : 'reading-objects' }
 TostTransporter >> readNewObjectOf: aClass [
 
 	| newObject |
@@ -194,19 +195,19 @@ TostTransporter >> readNewObjectOf: aClass [
 	^newObject
 ]
 
-{ #category : #'reading-objects' }
+{ #category : 'reading-objects' }
 TostTransporter >> readNextObject [
 	objectIndex := transportStream position.
 	^transport readObjectWith: self
 ]
 
-{ #category : #'reading-objects' }
+{ #category : 'reading-objects' }
 TostTransporter >> readObject [
 
 	^transport readObjectWith: self
 ]
 
-{ #category : #'reading-primitive data' }
+{ #category : 'reading-primitive data' }
 TostTransporter >> readPositiveInteger [
 
 	| bytesSize bytes |
@@ -215,7 +216,7 @@ TostTransporter >> readPositiveInteger [
 	^bytes asInteger
 ]
 
-{ #category : #'reading-primitive data' }
+{ #category : 'reading-primitive data' }
 TostTransporter >> readString: stringClass [
 
 	| bytesSize bytes |
@@ -224,7 +225,7 @@ TostTransporter >> readString: stringClass [
 	^stringClass fromByteArray: bytes
 ]
 
-{ #category : #api }
+{ #category : 'api' }
 TostTransporter >> serializeObject: anObject [
 
 	traveler := ObjectTraveler new.	
@@ -239,42 +240,42 @@ TostTransporter >> serializeObject: anObject [
 		self writeNextObject: each ]
 ]
 
-{ #category : #controlling }
+{ #category : 'controlling' }
 TostTransporter >> skip: anObject [
 	traveler skip: anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TostTransporter >> transport [
 	^ transport
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TostTransporter >> transport: anObject [
 	transport := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TostTransporter >> transportStream [
 	^ transportStream
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TostTransporter >> transportStream: anObject [
 	transportStream := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TostTransporter >> traveler [ 
 	^traveler
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TostTransporter >> traveler: anObject [
 	traveler := anObject
 ]
 
-{ #category : #controlling }
+{ #category : 'controlling' }
 TostTransporter >> whenMaterializationDoneFor: anObject do: actionBlock [
 	"When anObject created from stream it can require post processing action.
 	I execute them when traveler left given object 
@@ -284,19 +285,19 @@ TostTransporter >> whenMaterializationDoneFor: anObject do: actionBlock [
 	finalMaterializationActions at: anObject put: actionBlock
 ]
 
-{ #category : #'writing-primitive data' }
+{ #category : 'writing-primitive data' }
 TostTransporter >> writeByte: aByte [
 
 	transportStream nextPut: aByte
 ]
 
-{ #category : #'writing-primitive data' }
+{ #category : 'writing-primitive data' }
 TostTransporter >> writeBytes: aByteArray [
 	
 	transportStream nextPutAll: aByteArray 
 ]
 
-{ #category : #'writing-objects' }
+{ #category : 'writing-objects' }
 TostTransporter >> writeDuplicatedClass: aClass format: formatId [
 
 	processedClasses 
@@ -308,7 +309,7 @@ TostTransporter >> writeDuplicatedClass: aClass format: formatId [
 	^false
 ]
 
-{ #category : #'writing-objects' }
+{ #category : 'writing-objects' }
 TostTransporter >> writeDuplicatedObject: anObject format: formatId [
 
 	anObject isTostValueObject ifTrue: [ ^false ].
@@ -322,7 +323,7 @@ TostTransporter >> writeDuplicatedObject: anObject format: formatId [
 	^false
 ]
 
-{ #category : #'writing-primitive data' }
+{ #category : 'writing-primitive data' }
 TostTransporter >> writeInteger: anInteger [
 	| bytesSize |
 	bytesSize := anInteger bytesCount.
@@ -332,19 +333,19 @@ TostTransporter >> writeInteger: anInteger [
 	bytesSize to: 1 by: -1 do: [ :i | transportStream nextPut: (anInteger byteAt: i) ]
 ]
 
-{ #category : #'writing-objects' }
+{ #category : 'writing-objects' }
 TostTransporter >> writeNextObject: anObject [
 	objectIndex := transportStream position.
 	self writeObject: anObject
 ]
 
-{ #category : #'writing-objects' }
+{ #category : 'writing-objects' }
 TostTransporter >> writeObject: anObject [
 
 	^transport writeObject: anObject with: self
 ]
 
-{ #category : #'writing-objects' }
+{ #category : 'writing-objects' }
 TostTransporter >> writeObjectClass: aClass format: binaryType [
 	
 	transportStream nextPut: binaryType.
@@ -354,14 +355,14 @@ TostTransporter >> writeObjectClass: aClass format: binaryType [
 	self writeString: aClass name
 ]
 
-{ #category : #'writing-objects' }
+{ #category : 'writing-objects' }
 TostTransporter >> writeObjectIndex: objectIdInteger format: binaryTypeByte [
 
 	transportStream nextPut: binaryTypeByte.
 	self writePositiveInteger: objectIdInteger 
 ]
 
-{ #category : #'writing-primitive data' }
+{ #category : 'writing-primitive data' }
 TostTransporter >> writePositiveInteger: anInteger [
 	| bytesSize |
 	anInteger < 0 ifTrue: [ self error: 'Given int should be positive' ].
@@ -371,14 +372,14 @@ TostTransporter >> writePositiveInteger: anInteger [
 	bytesSize to: 1 by: -1 do: [ :i | transportStream nextPut: (anInteger byteAt: i) ]
 ]
 
-{ #category : #'writing-objects' }
+{ #category : 'writing-objects' }
 TostTransporter >> writeSmallObjectIndex: objectIdByte format: binaryTypeByte [
 
 	transportStream nextPut: binaryTypeByte.
 	transportStream nextPut: objectIdByte
 ]
 
-{ #category : #'writing-primitive data' }
+{ #category : 'writing-primitive data' }
 TostTransporter >> writeString: aString [
 	
 	| bytes |
@@ -387,7 +388,7 @@ TostTransporter >> writeString: aString [
 	transportStream nextPutAll: bytes
 ]
 
-{ #category : #'writing-objects' }
+{ #category : 'writing-objects' }
 TostTransporter >> writeSubstitution: substitutionObject for: anObject format: formatId [
 
 	self writeByte: formatId.

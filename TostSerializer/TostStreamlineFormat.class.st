@@ -3,7 +3,8 @@ I am a root of formats hierarchy which encode objects which are already written 
 My subclasses use a stream position of original objects for encoding and decoding.
 "
 Class {
-	#name : #TostStreamlineFormat,
-	#superclass : #TostFormat,
-	#category : #TostSerializer
+	#name : 'TostStreamlineFormat',
+	#superclass : 'TostFormat',
+	#category : 'TostSerializer',
+	#package : 'TostSerializer'
 }

@@ -1,6 +1,6 @@
-Extension { #name : #Float }
+Extension { #name : 'Float' }
 
-{ #category : #'*TostSerializer' }
+{ #category : '*TostSerializer' }
 Float class >> createTostInstanceWith: aTostTransporter [
 	^ (self new: 2)
 		at: 1 put: aTostTransporter readPositiveInteger;
@@ -9,7 +9,7 @@ Float class >> createTostInstanceWith: aTostTransporter [
 
 ]
 
-{ #category : #'*TostSerializer' }
+{ #category : '*TostSerializer' }
 Float >> writeTostBodyWith: aTostTransporter [
 
 	aTostTransporter

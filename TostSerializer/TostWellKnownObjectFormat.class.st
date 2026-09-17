@@ -9,20 +9,21 @@ There is similar default instance on class side.
 Number of well known objects is restricted to 255
 "
 Class {
-	#name : #TostWellKnownObjectFormat,
-	#superclass : #TostIndexedObjectFormat,
+	#name : 'TostWellKnownObjectFormat',
+	#superclass : 'TostIndexedObjectFormat',
 	#classInstVars : [
 		'default'
 	],
-	#category : 'TostSerializer'
+	#category : 'TostSerializer',
+	#package : 'TostSerializer'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TostWellKnownObjectFormat class >> default [
 	^default ifNil: [ default := TostWellKnownObjectFormat on: { nil. true. false. 0. 1 }]
 ]
 
-{ #category : #operations }
+{ #category : 'operations' }
 TostWellKnownObjectFormat >> readObjectWith: aTostTransporter [ 
 	| objectIndex foundObject |
 	objectIndex := aTostTransporter readByte.
@@ -31,7 +32,7 @@ TostWellKnownObjectFormat >> readObjectWith: aTostTransporter [
 	^foundObject
 ]
 
-{ #category : #operations }
+{ #category : 'operations' }
 TostWellKnownObjectFormat >> tryWriteObject: anObject with: aTostTransporter [
 	
 	| written |

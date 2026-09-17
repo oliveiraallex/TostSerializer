@@ -8,12 +8,13 @@ For example you could create compact format for nil, true and false:
 Number of well known classes is restricted to 255
 "
 Class {
-	#name : #TostNewObjectOfWellKnownClassFormat,
-	#superclass : #TostIndexedObjectFormat,
-	#category : 'TostSerializer'
+	#name : 'TostNewObjectOfWellKnownClassFormat',
+	#superclass : 'TostIndexedObjectFormat',
+	#category : 'TostSerializer',
+	#package : 'TostSerializer'
 }
 
-{ #category : #operations }
+{ #category : 'operations' }
 TostNewObjectOfWellKnownClassFormat >> readObjectWith: aTostTransporter [ 
 	| class classIndex |
 	classIndex := aTostTransporter readByte.
@@ -22,7 +23,7 @@ TostNewObjectOfWellKnownClassFormat >> readObjectWith: aTostTransporter [
 	^aTostTransporter readNewObjectOf: class
 ]
 
-{ #category : #operations }
+{ #category : 'operations' }
 TostNewObjectOfWellKnownClassFormat >> tryWriteObject: anObject with: aTostTransporter [
 	
 	| written |

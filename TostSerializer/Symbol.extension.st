@@ -1,6 +1,6 @@
-Extension { #name : #Symbol }
+Extension { #name : 'Symbol' }
 
-{ #category : #'*TostSerializer' }
+{ #category : '*TostSerializer' }
 Symbol class >> createTostInstanceWith: aTostTransporter [
 
 	| string |

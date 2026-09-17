@@ -10,26 +10,27 @@ Internal Representation and Key Implementation Points.
 	content:		<Object>
 "
 Class {
-	#name : #TostTestContainer,
-	#superclass : #Object,
+	#name : 'TostTestContainer',
+	#superclass : 'Object',
 	#instVars : [
 		'content'
 	],
-	#category : #'TostSerializer-Tests'
+	#category : 'TostSerializer-Tests',
+	#package : 'TostSerializer-Tests'
 }
 
-{ #category : #'instance creation' }
+{ #category : 'instance creation' }
 TostTestContainer class >> with: anObject [
 	^self new 
 		content: anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TostTestContainer >> content [
 	^ content
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 TostTestContainer >> content: anObject [
 	content := anObject
 ]

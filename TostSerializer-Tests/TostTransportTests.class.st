@@ -1,15 +1,16 @@
 Class {
-	#name : #TostTransportTests,
-	#superclass : #TostTransportTestCase,
-	#category : #'TostSerializer-Tests'
+	#name : 'TostTransportTests',
+	#superclass : 'TostTransportTestCase',
+	#category : 'TostSerializer-Tests',
+	#package : 'TostSerializer-Tests'
 }
 
-{ #category : #running }
+{ #category : 'running' }
 TostTransportTests >> createTransportStream [
 	transportStream := ByteArray new writeStream
 ]
 
-{ #category : #tests }
+{ #category : 'tests' }
 TostTransportTests >> testObjectTransportationAPI [
 
 	| object transferredObject |

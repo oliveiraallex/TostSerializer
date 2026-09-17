@@ -1,1 +1,1 @@
-Package { #name : #'TostSerializer-Tests' }
+Package { #name : 'TostSerializer-Tests' }

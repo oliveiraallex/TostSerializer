@@ -1,6 +1,6 @@
-Extension { #name : #SmallFloat64 }
+Extension { #name : 'SmallFloat64' }
 
-{ #category : #'*TostSerializer' }
+{ #category : '*TostSerializer' }
 SmallFloat64 class >> createTostInstanceWith: aTostTransporter [
 	^ (BoxedFloat64 createTostInstanceWith: aTostTransporter) * 1.0
 ]

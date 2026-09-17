@@ -1,10 +1,11 @@
 Class {
-	#name : #TostMaterializationTests,
-	#superclass : #TostTransportTestCase,
-	#category : #'TostSerializer-Tests'
+	#name : 'TostMaterializationTests',
+	#superclass : 'TostTransportTestCase',
+	#category : 'TostSerializer-Tests',
+	#package : 'TostSerializer-Tests'
 }
 
-{ #category : #helpers }
+{ #category : 'helpers' }
 TostMaterializationTests >> binaryData: aByteArray [
 
 	transportStream reset.
@@ -12,18 +13,18 @@ TostMaterializationTests >> binaryData: aByteArray [
 	transportStream reset
 ]
 
-{ #category : #running }
+{ #category : 'running' }
 TostMaterializationTests >> createTransportStream [
 	transportStream := ReadWriteStream on: ByteArray new
 ]
 
-{ #category : #helpers }
+{ #category : 'helpers' }
 TostMaterializationTests >> serialize: anObject [
 	
 	self serializeAll: {anObject}
 ]
 
-{ #category : #helpers }
+{ #category : 'helpers' }
 TostMaterializationTests >> serializeAll: objects [
 	
 	| serializer |
@@ -33,7 +34,7 @@ TostMaterializationTests >> serializeAll: objects [
 	transportStream reset
 ]
 
-{ #category : #'tests-objects' }
+{ #category : 'tests-objects' }
 TostMaterializationTests >> testArrayWithTwoEmptyObjects [
 
 	| actual |
@@ -47,7 +48,7 @@ TostMaterializationTests >> testArrayWithTwoEmptyObjects [
 	actual last should beInstanceOf: Object.
 ]
 
-{ #category : #'tests-objects' }
+{ #category : 'tests-objects' }
 TostMaterializationTests >> testBitmapInstance [
 
 	| actual |
@@ -59,7 +60,7 @@ TostMaterializationTests >> testBitmapInstance [
 	actual should equalInOrder: #(1 2 5 10)
 ]
 
-{ #category : #'tests-objects' }
+{ #category : 'tests-objects' }
 TostMaterializationTests >> testBlockClosureWithContex [
 
 	| actual temp block |
@@ -75,7 +76,7 @@ TostMaterializationTests >> testBlockClosureWithContex [
 	actual value should equal: temp + 2
 ]
 
-{ #category : #'tests-objects' }
+{ #category : 'tests-objects' }
 TostMaterializationTests >> testBlockClosureWithoutContext [
 
 	| actual temp block |
@@ -92,7 +93,7 @@ TostMaterializationTests >> testBlockClosureWithoutContext [
 	actual value should equal: temp + 2
 ]
 
-{ #category : #'tests-objects' }
+{ #category : 'tests-objects' }
 TostMaterializationTests >> testByteArrayInstance [
 
 	| actual |
@@ -104,7 +105,7 @@ TostMaterializationTests >> testByteArrayInstance [
 	actual should equal: #[1 2 5 10]
 ]
 
-{ #category : #'tests-objects' }
+{ #category : 'tests-objects' }
 TostMaterializationTests >> testByteString [
 
 	| actual |
@@ -116,7 +117,7 @@ TostMaterializationTests >> testByteString [
 	actual should equal: 'test string'
 ]
 
-{ #category : #'tests-objects' }
+{ #category : 'tests-objects' }
 TostMaterializationTests >> testByteSymbol [
 
 	| actual |
@@ -128,7 +129,7 @@ TostMaterializationTests >> testByteSymbol [
 	actual should equal: #'test string'
 ]
 
-{ #category : #'tests-objects' }
+{ #category : 'tests-objects' }
 TostMaterializationTests >> testCharacter [
 
 	| actual |
@@ -139,7 +140,7 @@ TostMaterializationTests >> testCharacter [
 	actual should equal: $R
 ]
 
-{ #category : #'tests-objects' }
+{ #category : 'tests-objects' }
 TostMaterializationTests >> testCompiledMethod [
 
 	| actual area |
@@ -153,7 +154,7 @@ TostMaterializationTests >> testCompiledMethod [
 	area should equal: 6
 ]
 
-{ #category : #'tests-objects' }
+{ #category : 'tests-objects' }
 TostMaterializationTests >> testDictionary [
 	| dict actual key1 key2 |
 	dict := Dictionary newFrom: {Object new -> #item1. Object new -> #item2}.
@@ -168,7 +169,7 @@ TostMaterializationTests >> testDictionary [
 	actual should include: #item2 at: key2.
 ]
 
-{ #category : #'tests-objects' }
+{ #category : 'tests-objects' }
 TostMaterializationTests >> testEmptyObject [
 
 	| actual |
@@ -179,7 +180,7 @@ TostMaterializationTests >> testEmptyObject [
 	actual should beInstanceOf: Object
 ]
 
-{ #category : #'tests-objects' }
+{ #category : 'tests-objects' }
 TostMaterializationTests >> testFalse [
 	| actual |
 	self serialize: false.	
@@ -189,7 +190,7 @@ TostMaterializationTests >> testFalse [
 	actual should be: false
 ]
 
-{ #category : #'tests-objects' }
+{ #category : 'tests-objects' }
 TostMaterializationTests >> testFloatInstance [
 
 	| actual |
@@ -201,7 +202,7 @@ TostMaterializationTests >> testFloatInstance [
 	actual should equal: 1.5
 ]
 
-{ #category : #'tests-objects' }
+{ #category : 'tests-objects' }
 TostMaterializationTests >> testFraction [
 
 	| actual |
@@ -213,7 +214,7 @@ TostMaterializationTests >> testFraction [
 	actual should equal: 3/2
 ]
 
-{ #category : #'tests-objects' }
+{ #category : 'tests-objects' }
 TostMaterializationTests >> testIntegerInstance [
 
 	| actual |
@@ -224,7 +225,7 @@ TostMaterializationTests >> testIntegerInstance [
 	actual should equal: 300
 ]
 
-{ #category : #'tests-objects' }
+{ #category : 'tests-objects' }
 TostMaterializationTests >> testIntegerInstanceOf4Bytes [
 
 	| actual |
@@ -235,7 +236,7 @@ TostMaterializationTests >> testIntegerInstanceOf4Bytes [
 	actual should equal: 300000000
 ]
 
-{ #category : #'tests-objects' }
+{ #category : 'tests-objects' }
 TostMaterializationTests >> testInternalDictionaryAsLastChild [
 	| dict actual key1 key2 container |
 	dict := Dictionary newFrom: {Object new -> #item1. Object new -> #item2}.
@@ -252,7 +253,7 @@ TostMaterializationTests >> testInternalDictionaryAsLastChild [
 	actual should include: #item2 at: key2.
 ]
 
-{ #category : #'tests-objects' }
+{ #category : 'tests-objects' }
 TostMaterializationTests >> testLargeNegativeInteger [
 
 	| actual |
@@ -264,7 +265,7 @@ TostMaterializationTests >> testLargeNegativeInteger [
 	actual should equal: -3575740990698772000111222
 ]
 
-{ #category : #'tests-objects' }
+{ #category : 'tests-objects' }
 TostMaterializationTests >> testLargePositiveInteger [
 
 	| actual |
@@ -276,7 +277,7 @@ TostMaterializationTests >> testLargePositiveInteger [
 	actual should equal: 3575740990698772000111222
 ]
 
-{ #category : #'tests-objects' }
+{ #category : 'tests-objects' }
 TostMaterializationTests >> testNegativeFloatInstance [
 
 	| actual |
@@ -288,7 +289,7 @@ TostMaterializationTests >> testNegativeFloatInstance [
 	actual should equal: -1.5
 ]
 
-{ #category : #'tests-objects' }
+{ #category : 'tests-objects' }
 TostMaterializationTests >> testNegativeFraction [
 
 	| actual |
@@ -300,7 +301,7 @@ TostMaterializationTests >> testNegativeFraction [
 	actual should equal: -3/2
 ]
 
-{ #category : #'tests-objects' }
+{ #category : 'tests-objects' }
 TostMaterializationTests >> testNil [
 	| actual |
 	self serialize: nil.	
@@ -310,7 +311,7 @@ TostMaterializationTests >> testNil [
 	actual should be: nil
 ]
 
-{ #category : #'tests-objects' }
+{ #category : 'tests-objects' }
 TostMaterializationTests >> testObjectOfWellKnownClass [
 
 	| actual |
@@ -322,7 +323,7 @@ TostMaterializationTests >> testObjectOfWellKnownClass [
 	actual should beInstanceOf: Object
 ]
 
-{ #category : #'tests-objects' }
+{ #category : 'tests-objects' }
 TostMaterializationTests >> testObjectWhichReferenceShouldBeSubstitutedDynamicaly [
 
 	| actual object root substitution substitutionFormat |
@@ -342,7 +343,7 @@ TostMaterializationTests >> testObjectWhichReferenceShouldBeSubstitutedDynamical
 	actual content last should equal: 3@4
 ]
 
-{ #category : #'tests-objects' }
+{ #category : 'tests-objects' }
 TostMaterializationTests >> testObjectWhichReferenceShouldBeSubstitutedStatically [
 
 	| actual object root substitution substitutionFormat |
@@ -361,7 +362,7 @@ TostMaterializationTests >> testObjectWhichReferenceShouldBeSubstitutedStaticall
 	actual content last should equal: 3@4
 ]
 
-{ #category : #'tests-objects' }
+{ #category : 'tests-objects' }
 TostMaterializationTests >> testObjectWhichReferencesAnotherObjectWhichReferencesInteger [
 
 	| actual |
@@ -374,7 +375,7 @@ TostMaterializationTests >> testObjectWhichReferencesAnotherObjectWhichReference
 	actual content content should equal: 10
 ]
 
-{ #category : #'tests-objects' }
+{ #category : 'tests-objects' }
 TostMaterializationTests >> testObjectWhichReferencesInteger [
 
 	| actual |
@@ -386,7 +387,7 @@ TostMaterializationTests >> testObjectWhichReferencesInteger [
 	actual content should equal: 10
 ]
 
-{ #category : #'tests-objects' }
+{ #category : 'tests-objects' }
 TostMaterializationTests >> testObjectWithSubstitutionWhichContainsGivenObjectItself [
 
 	| actual object root substitution substitutionFormat |
@@ -412,7 +413,7 @@ TostMaterializationTests >> testObjectWithSubstitutionWhichContainsGivenObjectIt
 	actual content first content should equal: object
 ]
 
-{ #category : #'tests-objects' }
+{ #category : 'tests-objects' }
 TostMaterializationTests >> testObjectWithTwoReferencesToSameObjectWhichShouldBeSubstituted [
 
 	| actual object root substitution substitutionFormat |
@@ -428,7 +429,7 @@ TostMaterializationTests >> testObjectWithTwoReferencesToSameObjectWhichShouldBe
 	actual content should equal: { substitution. substitution }
 ]
 
-{ #category : #'tests-objects' }
+{ #category : 'tests-objects' }
 TostMaterializationTests >> testPostProcessingLastSubstitution [
 	"When full object graph is materialized traveler can stopped at deep child object.
 	In that case it will not perform leave node action which will not trigger post processing.
@@ -451,7 +452,7 @@ TostMaterializationTests >> testPostProcessingLastSubstitution [
 	set should include: item2
 ]
 
-{ #category : #'tests-objects' }
+{ #category : 'tests-objects' }
 TostMaterializationTests >> testPostProcessingOfMultipleActions [
 	"it should cover the case when last post processing action is evaluated but not removed.
 	For example array with two sets will require two rehashing as post processing"
@@ -473,7 +474,7 @@ TostMaterializationTests >> testPostProcessingOfMultipleActions [
 	set2 should include: item2
 ]
 
-{ #category : #'tests-primitive data' }
+{ #category : 'tests-primitive data' }
 TostMaterializationTests >> testReadingBytes [
 
 	| actual |
@@ -484,7 +485,7 @@ TostMaterializationTests >> testReadingBytes [
 	actual should equal: #[1 2]
 ]
 
-{ #category : #'tests-primitive data' }
+{ #category : 'tests-primitive data' }
 TostMaterializationTests >> testReadingOneByteInteger [
 
 	| actual |
@@ -495,7 +496,7 @@ TostMaterializationTests >> testReadingOneByteInteger [
 	actual should equal: 10
 ]
 
-{ #category : #'tests-primitive data' }
+{ #category : 'tests-primitive data' }
 TostMaterializationTests >> testReadingTwoBytesInteger [
 	| actual |
 	self binaryData: {2. 0. (300 byteAt: 2). (300 byteAt: 1)}.
@@ -503,7 +504,7 @@ TostMaterializationTests >> testReadingTwoBytesInteger [
 	actual should equal: 300
 ]
 
-{ #category : #'tests-primitive data' }
+{ #category : 'tests-primitive data' }
 TostMaterializationTests >> testReadingTwoBytesNegativeInteger [
 	| actual |
 	self binaryData: {2. 1. (300 byteAt: 2). (300 byteAt: 1)}.
@@ -511,7 +512,7 @@ TostMaterializationTests >> testReadingTwoBytesNegativeInteger [
 	actual should equal: -300
 ]
 
-{ #category : #'tests-primitive data' }
+{ #category : 'tests-primitive data' }
 TostMaterializationTests >> testReadingTwoBytesPositiveInteger [
 	| actual |
 	self binaryData: {2. (300 byteAt: 2). (300 byteAt: 1)}.
@@ -519,7 +520,7 @@ TostMaterializationTests >> testReadingTwoBytesPositiveInteger [
 	actual should equal: 300
 ]
 
-{ #category : #'tests-objects' }
+{ #category : 'tests-objects' }
 TostMaterializationTests >> testSameObjectTwice [
 
 	| object first second |
@@ -533,7 +534,7 @@ TostMaterializationTests >> testSameObjectTwice [
 	first should be: second
 ]
 
-{ #category : #'tests-objects' }
+{ #category : 'tests-objects' }
 TostMaterializationTests >> testSet [
 	| set actual item1 item2 |
 	set := Set new. 
@@ -548,7 +549,7 @@ TostMaterializationTests >> testSet [
 	actual should include: item2.
 ]
 
-{ #category : #'tests-objects' }
+{ #category : 'tests-objects' }
 TostMaterializationTests >> testTreeObjectsOfSameClassWhereLastTwoAreSame [
 
 	| first second object third |
@@ -564,7 +565,7 @@ TostMaterializationTests >> testTreeObjectsOfSameClassWhereLastTwoAreSame [
 	second should be: third
 ]
 
-{ #category : #'tests-objects' }
+{ #category : 'tests-objects' }
 TostMaterializationTests >> testTrue [
 	| actual |
 	self serialize: true.	
@@ -574,7 +575,7 @@ TostMaterializationTests >> testTrue [
 	actual should be: true
 ]
 
-{ #category : #'tests-objects' }
+{ #category : 'tests-objects' }
 TostMaterializationTests >> testTwoObjectsOfSameClass [
 
 	| first second |
@@ -588,7 +589,7 @@ TostMaterializationTests >> testTwoObjectsOfSameClass [
 	first should not be: second
 ]
 
-{ #category : #'tests-objects' }
+{ #category : 'tests-objects' }
 TostMaterializationTests >> testUUIDInstance [
 
 	| actual uuid |
@@ -601,7 +602,7 @@ TostMaterializationTests >> testUUIDInstance [
 	actual should equal: uuid
 ]
 
-{ #category : #'tests-objects' }
+{ #category : 'tests-objects' }
 TostMaterializationTests >> testWellKnownEmptyObject [
 
 	| actual object |
@@ -616,7 +617,7 @@ TostMaterializationTests >> testWellKnownEmptyObject [
 	actual first should be: object
 ]
 
-{ #category : #'tests-objects' }
+{ #category : 'tests-objects' }
 TostMaterializationTests >> testWellKnownEmptyRootObject [
 
 	| actual object |
@@ -630,7 +631,7 @@ TostMaterializationTests >> testWellKnownEmptyRootObject [
 	actual should be: object
 ]
 
-{ #category : #'tests-objects' }
+{ #category : 'tests-objects' }
 TostMaterializationTests >> testWellKnownNonEmptyObjectInsideContainer [
 
 	| actual array container |
@@ -645,7 +646,7 @@ TostMaterializationTests >> testWellKnownNonEmptyObjectInsideContainer [
 	array should equal: #(1 2) copy.
 ]
 
-{ #category : #'tests-objects' }
+{ #category : 'tests-objects' }
 TostMaterializationTests >> testWellKnownNonEmptyRootObject [
 
 	| actual object |
@@ -659,7 +660,7 @@ TostMaterializationTests >> testWellKnownNonEmptyRootObject [
 	actual should equal: #(1 2) copy
 ]
 
-{ #category : #'tests-objects' }
+{ #category : 'tests-objects' }
 TostMaterializationTests >> testWideString [
 
 	| actual |
